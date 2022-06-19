@@ -12,14 +12,29 @@ import TableContainer from '@mui/material/TableContainer'
 import TablePagination from '@mui/material/TablePagination'
 
 const columns = [
-  { id: 'id', label: 'ID', minWidth: 170 },
-  { id: 'email', label: 'Email', minWidth: 100 },
+  { id: 'userId', label: 'User Id', minWidth: 170 },
+  { id: 'id', label: 'id', minWidth: 100 },
   {
-    id: 'time',
-    label: 'Time',
+    id: 'title',
+    label: 'Title',
+    minWidth: 170
+  },
+  {
+    id: 'completed',
+    label: 'Completed',
     minWidth: 170
   }
 ]
+
+// const columns = [
+//   { id: 'id', label: 'ID', minWidth: 170 },
+//   { id: 'email', label: 'Email', minWidth: 100 },
+//   {
+//     id: 'time',
+//     label: 'Time',
+//     minWidth: 170
+//   }
+// ]
 
 const TableStickyHeader = ({ data }) => {
   // ** States
@@ -60,7 +75,11 @@ const TableStickyHeader = ({ data }) => {
 
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number' ? column.format(value) : value}
+                          {column.id === 'completed' ? (
+                            value.toString()
+                          ) : (
+                            <> {column.format && typeof value === 'number' ? column.format(value) : value}</>
+                          )}
                         </TableCell>
                       )
                     })}
