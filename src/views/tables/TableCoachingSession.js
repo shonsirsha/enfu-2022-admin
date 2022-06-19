@@ -14,16 +14,25 @@ import TablePagination from '@mui/material/TablePagination'
 import formatDate from '../../../utils/formatDate'
 
 const columns = [
-  { id: 'id', label: 'ID', minWidth: 170 },
+  { id: 'id', label: 'ID', minWidth: 100 },
+  { id: 'fullName', label: 'Full Name', minWidth: 100 },
+  { id: 'facultyDepartmentBatch', label: 'Fac / Dep / Batch', minWidth: 100 },
   { id: 'email', label: 'Email', minWidth: 100 },
+  { id: 'univName', label: 'University / Institute', minWidth: 100 },
+  { id: 'phoneNr', label: 'Phone', minWidth: 100 },
+  {
+    id: 'verif',
+    label: 'Verif Status',
+    minWidth: 100
+  },
   {
     id: 'time',
     label: 'Tanggal & Waktu (WIB)',
-    minWidth: 170
+    minWidth: 100
   }
 ]
 
-const TableStickyHeader = ({ data }) => {
+const TableSharingSession = ({ data }) => {
   // ** States
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(25)
@@ -86,4 +95,4 @@ const TableStickyHeader = ({ data }) => {
   )
 }
 
-export default TableStickyHeader
+export default TableSharingSession

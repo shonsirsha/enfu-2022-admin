@@ -12,7 +12,7 @@ import InputAdornment from '@mui/material/InputAdornment'
 
 import Magnify from 'mdi-material-ui/Magnify'
 
-import TableSharingSession from 'src/views/tables/TableSharingSession'
+import TableCoachingSession from 'src/views/tables/TableCoachingSession'
 
 const SharingSession = ({ registrees }) => {
   const [filteredRegistrees, setFilteredRegistrees] = useState(registrees)
@@ -48,7 +48,7 @@ const SharingSession = ({ registrees }) => {
               paddingRight: 4
             }}
           >
-            <CardHeader title='Sharing Session' titleTypographyProps={{ variant: 'h6' }} />
+            <CardHeader title='Seminar Nasional' titleTypographyProps={{ variant: 'h6' }} />
             <TextField
               onChange={e => {
                 const text = e.target.value.toLowerCase()
@@ -67,7 +67,7 @@ const SharingSession = ({ registrees }) => {
             />
           </Box>
 
-          <TableSharingSession data={filteredRegistrees} />
+          <TableCoachingSession data={filteredRegistrees} />
         </Card>
       </Grid>
     </Grid>
@@ -86,7 +86,7 @@ export async function getServerSideProps(ctx) {
     }
   }
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/sharing-session`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/seminar-nasional`, {
     method: 'GET',
     headers: {
       'x-auth-token': token

@@ -18,7 +18,7 @@ const columns = [
   { id: 'fullName', label: 'Full Name', minWidth: 100 },
   { id: 'facultyDepartmentBatch', label: 'Fac / Dep / Batch', minWidth: 100 },
   { id: 'email', label: 'Email', minWidth: 100 },
-  { id: 'univName', label: 'University', minWidth: 100 },
+  { id: 'univName', label: 'University / Institute', minWidth: 100 },
   { id: 'phoneNr', label: 'Phone', minWidth: 100 },
   {
     id: 'verif',
@@ -37,7 +37,7 @@ const TableSharingSession = ({ data }) => {
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(25)
 
-  const handleChangePage = (event, newPage) => {
+  const handleChangePage = (_, newPage) => {
     setPage(newPage)
   }
 
@@ -48,7 +48,7 @@ const TableSharingSession = ({ data }) => {
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: '760px' }}>
+      <TableContainer sx={{ maxHeight: '600px' }}>
         <Table stickyHeader aria-label='sticky table'>
           <TableHead>
             <TableRow>
