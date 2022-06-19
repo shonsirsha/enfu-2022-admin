@@ -62,7 +62,8 @@ const TableStickyHeader = ({ data }) => {
 
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.id === 'time' ? formatDate(parseInt(value)) : value}
+                          {/* {column.id === 'time' ? formatDate(parseInt(value)) : value} */}
+                          {value}
                         </TableCell>
                       )
                     })}
