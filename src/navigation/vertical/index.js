@@ -17,7 +17,7 @@ const navigation = () => {
     {
       title: 'DBCC',
       icon: AccountPlusOutline,
-      path: '/pages/dbcc'
+      path: '/dbcc'
     },
     {
       title: 'Seminar Nasional',
