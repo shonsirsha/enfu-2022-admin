@@ -11,30 +11,17 @@ import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import TablePagination from '@mui/material/TablePagination'
 
+import formatDate from '../../../utils/formatDate'
+
 const columns = [
-  { id: 'userId', label: 'User Id', minWidth: 170 },
-  { id: 'id', label: 'id', minWidth: 100 },
+  { id: 'id', label: 'ID', minWidth: 170 },
+  { id: 'email', label: 'Email', minWidth: 100 },
   {
-    id: 'title',
-    label: 'Title',
-    minWidth: 170
-  },
-  {
-    id: 'completed',
-    label: 'Completed',
+    id: 'time',
+    label: 'Tanggal & Waktu (WIB)',
     minWidth: 170
   }
 ]
-
-// const columns = [
-//   { id: 'id', label: 'ID', minWidth: 170 },
-//   { id: 'email', label: 'Email', minWidth: 100 },
-//   {
-//     id: 'time',
-//     label: 'Time',
-//     minWidth: 170
-//   }
-// ]
 
 const TableStickyHeader = ({ data }) => {
   // ** States
@@ -75,11 +62,7 @@ const TableStickyHeader = ({ data }) => {
 
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.id === 'completed' ? (
-                            value.toString()
-                          ) : (
-                            <> {column.format && typeof value === 'number' ? column.format(value) : value}</>
-                          )}
+                          {column.id === 'time' ? formatDate(parseInt(value)) : value}
                         </TableCell>
                       )
                     })}

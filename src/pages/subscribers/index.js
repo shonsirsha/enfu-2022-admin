@@ -19,12 +19,12 @@ const Subscribers = ({ subscribers }) => {
 }
 
 export async function getStaticProps() {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/todos`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/subscribers`)
   const subscribers = await res.json()
 
   return {
     props: {
-      subscribers: subscribers
+      subscribers: subscribers.result
     },
     revalidate: 1
   }
