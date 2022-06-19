@@ -19,7 +19,6 @@ import Footer from './components/shared-components/footer'
 import ScrollToTop from 'src/@core/components/scroll-to-top'
 
 // ** Styled Component
-import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker'
 
 const VerticalLayoutWrapper = styled('div')({
   height: '100%',
@@ -86,10 +85,6 @@ const VerticalLayout = props => {
           </ContentWrapper>
 
           <Footer {...props} />
-
-          <DatePickerWrapper sx={{ zIndex: 11 }}>
-            <Box id='react-datepicker-portal'></Box>
-          </DatePickerWrapper>
         </MainContentWrapper>
       </VerticalLayoutWrapper>
 
