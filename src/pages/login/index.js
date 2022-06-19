@@ -1,8 +1,7 @@
 // ** React Imports
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // ** Next Imports
-import { useRouter } from 'next/router'
 
 // ** MUI Components
 import Box from '@mui/material/Box'
@@ -18,6 +17,8 @@ import { styled } from '@mui/material/styles'
 import MuiCard from '@mui/material/Card'
 import InputAdornment from '@mui/material/InputAdornment'
 
+import login from '../../../services/login'
+
 // ** Icons Imports
 import EyeOutline from 'mdi-material-ui/EyeOutline'
 import EyeOffOutline from 'mdi-material-ui/EyeOffOutline'
@@ -25,12 +26,14 @@ import EyeOffOutline from 'mdi-material-ui/EyeOffOutline'
 // ** Layout Import
 import BlankLayout from 'src/@core/layouts/BlankLayout'
 
+import { parseCookies } from '../../../utils/cookies'
+
 // ** Styled Components
 const Card = styled(MuiCard)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: { width: '28rem' }
 }))
 
-const LoginPage = () => {
+const LoginPage = ({}) => {
   // ** State
   const [values, setValues] = useState({
     email: '',
@@ -39,7 +42,6 @@ const LoginPage = () => {
   })
 
   // ** Hook
-  const router = useRouter()
 
   const handleChange = prop => event => {
     setValues({ ...values, [prop]: event.target.value })
@@ -112,7 +114,9 @@ const LoginPage = () => {
               size='large'
               variant='contained'
               sx={{ marginBottom: 7, marginTop: 8 }}
-              onClick={() => router.push('/')}
+              onClick={async () => {
+                await login(values.email, values.password)
+              }}
             >
               Login
             </Button>
@@ -123,5 +127,22 @@ const LoginPage = () => {
   )
 }
 LoginPage.getLayout = page => <BlankLayout>{page}</BlankLayout>
+
+export async function getServerSideProps(ctx) {
+  const { token } = parseCookies(ctx.req)
+
+  if (token) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/'
+      }
+    }
+  }
+
+  return {
+    props: {}
+  }
+}
 
 export default LoginPage

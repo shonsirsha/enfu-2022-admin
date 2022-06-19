@@ -16,6 +16,8 @@ import Typography from '@mui/material/Typography'
 
 import LogoutVariant from 'mdi-material-ui/LogoutVariant'
 
+import logout from '../../../../../services/logout'
+
 // ** Styled Components
 const BadgeContentSpan = styled('span')(({ theme }) => ({
   width: 8,
@@ -81,7 +83,13 @@ const UserDropdown = () => {
         </Box>
 
         <Divider />
-        <MenuItem sx={{ py: 2 }} onClick={() => handleDropdownClose('/login')}>
+        <MenuItem
+          sx={{ py: 2 }}
+          onClick={async () => {
+            await logout()
+            router.push('/login')
+          }}
+        >
           <LogoutVariant sx={{ marginRight: 2, fontSize: '1.375rem', color: 'text.secondary' }} />
           Logout
         </MenuItem>

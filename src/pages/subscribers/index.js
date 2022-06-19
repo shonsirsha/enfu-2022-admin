@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import formatDate from '../../../utils/formatDate'
+import { parseCookies } from '../../../utils/cookies'
 
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
@@ -70,16 +71,32 @@ const Subscribers = ({ subscribers }) => {
   )
 }
 
-export async function getStaticProps() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/subscribers`)
+export async function getServerSideProps(ctx) {
+  const { token } = parseCookies(ctx.req)
+
+  if (!token) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/login'
+      }
+    }
+  }
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/subscribers`, {
+    method: 'GET',
+    headers: {
+      'x-auth-token': token
+    }
+  })
+
   let subscribers = (await res.json()).result
   subscribers = subscribers.map(subscriber => ({ ...subscriber, time: formatDate(parseInt(subscriber.time)) }))
 
   return {
     props: {
       subscribers
-    },
-    revalidate: 1
+    }
   }
 }
 

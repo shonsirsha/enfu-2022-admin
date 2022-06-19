@@ -1,6 +1,10 @@
 // ** Next Imports
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { Router } from 'next/router'
+import { auth } from '../Firebase'
+import { onAuthStateChanged } from 'firebase/auth'
 
 // ** Loader Import
 import NProgress from 'nprogress'
@@ -44,7 +48,34 @@ if (themeConfig.routingLoader) {
 
 // ** Configure JSS & ClassName
 const App = props => {
+  const router = useRouter()
+  const [user, setUser] = useState(null)
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
+
+  // useEffect(() => {
+  //   const unsub = onAuthStateChanged(auth, user => {
+  //     if (user) {
+  //       router.push('/')
+
+  //       auth.currentUser.getIdToken().then(idToken => {
+  //         console.log(idToken)
+  //       })
+  //     } else {
+  //       // router.push('/login')
+  //     }
+
+  //     setUser(user ? user : null)
+  //     console.log('Auth state changed', user)
+  //   })
+
+  //   return unsub
+  // }, [])
+
+  // useEffect(() => {
+  //   if (user) {
+  //   } else {
+  //   }
+  // }, [user, router])
 
   // Variables
   const getLayout = Component.getLayout ?? (page => <UserLayout>{page}</UserLayout>)
