@@ -74,7 +74,7 @@ const App = props => {
         console.log('Still lives longer')
       }
       console.log(minutechecker())
-    }, 60 * 5 * 1000) // every 3 minutes
+    }, 30 * 5 * 1000) // every 30 seconds
 
     return () => clearInterval(tokenRefreshInterval)
   }, [])
