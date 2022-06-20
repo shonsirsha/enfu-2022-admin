@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Router } from 'next/router'
-import { auth } from '../Firebase'
-import { onAuthStateChanged } from 'firebase/auth'
+import readCookieClient from '../../utils/readCookieClient'
+import refreshToken from '../../services/refreshToken'
 
 // ** Loader Import
 import NProgress from 'nprogress'
@@ -52,30 +52,32 @@ const App = props => {
   const [user, setUser] = useState(null)
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
 
-  // useEffect(() => {
-  //   const unsub = onAuthStateChanged(auth, user => {
-  //     if (user) {
-  //       router.push('/')
+  const minutechecker = () => {
+    const tokenExprIn = readCookieClient('token_expires_in')
+    if (tokenExprIn) {
+      return Math.round((parseInt(tokenExprIn) - Date.now()) / 60000)
+    }
 
-  //       auth.currentUser.getIdToken().then(idToken => {
-  //         console.log(idToken)
-  //       })
-  //     } else {
-  //       // router.push('/login')
-  //     }
+    return 1000
+  }
 
-  //     setUser(user ? user : null)
-  //     console.log('Auth state changed', user)
-  //   })
+  useEffect(() => {
+    const tokenRefreshInterval = setInterval(() => {
+      let exprIn = minutechecker()
 
-  //   return unsub
-  // }, [])
+      if (exprIn <= 25) {
+        console.log('REFRESHING TOKEN...')
+        refreshToken().then(() => {
+          console.log('token refreshed...')
+        })
+      } else {
+        console.log('Still lives longer')
+      }
+      console.log(minutechecker())
+    }, 60 * 5 * 1000) // every 3 minutes
 
-  // useEffect(() => {
-  //   if (user) {
-  //   } else {
-  //   }
-  // }, [user, router])
+    return () => clearInterval(tokenRefreshInterval)
+  }, [])
 
   // Variables
   const getLayout = Component.getLayout ?? (page => <UserLayout>{page}</UserLayout>)
