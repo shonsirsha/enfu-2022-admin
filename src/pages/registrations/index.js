@@ -150,10 +150,7 @@ export async function getServerSideProps(ctx) {
   }
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/config`, {
-    method: 'GET',
-    headers: {
-      'x-auth-token': token
-    }
+    method: 'GET'
   })
 
   const config = (await res.json()).result[0]
