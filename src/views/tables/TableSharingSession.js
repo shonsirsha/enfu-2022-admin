@@ -1,5 +1,6 @@
 // ** React Imports
 import { useState } from 'react'
+import Link from 'next/link'
 
 // ** MUI Imports
 import Paper from '@mui/material/Paper'
@@ -10,8 +11,7 @@ import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import TablePagination from '@mui/material/TablePagination'
-
-import formatDate from '../../../utils/formatDate'
+import VerifChip from 'src/@core/components/verifchip'
 
 const columns = [
   { id: 'id', label: 'ID', minWidth: 100 },
@@ -65,18 +65,19 @@ const TableSharingSession = ({ data }) => {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map(row => {
                 return (
-                  <TableRow hover role='checkbox' tabIndex={-1} key={row.id}>
-                    {columns.map(column => {
-                      const value = row[column.id]
+                  <Link key={row.id} passHref href={`/sharing-session/${row.id}`}>
+                    <TableRow hover role='checkbox' tabIndex={-1} key={row.id}>
+                      {columns.map(column => {
+                        const value = row[column.id]
 
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {/* {column.id === 'time' ? formatDate(parseInt(value)) : value} */}
-                          {value}
-                        </TableCell>
-                      )
-                    })}
-                  </TableRow>
+                        return (
+                          <TableCell key={column.id} align={column.align}>
+                            {column.id === 'verif' ? <VerifChip verif={value} /> : <>{value}</>}
+                          </TableCell>
+                        )
+                      })}
+                    </TableRow>
+                  </Link>
                 )
               })}
           </TableBody>

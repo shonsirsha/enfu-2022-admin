@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import formatDate from '../../../utils/formatDate'
 import { parseCookies } from '../../../utils/cookies'
+import verifText from '../../../utils/verifText'
 
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
@@ -30,6 +31,7 @@ const SharingSession = ({ registrees }) => {
           registree.teamId.toString().toLowerCase().includes(keyword) ||
           registree.univName1.toLowerCase().toString().includes(keyword) ||
           registree.phoneNr1.toString().toLowerCase().includes(keyword) ||
+          registree.verif.toString().toLowerCase().includes(keyword) ||
           registree.time.toString().toLowerCase().includes(keyword)
       )
       setFilteredRegistrees(filtered)
@@ -106,7 +108,7 @@ export async function getServerSideProps(ctx) {
     phoneNr1: registree.phoneNr1,
     fullName2: registree.fullName2,
     fullName3: registree.fullName3,
-    verif: registree.verif,
+    verif: verifText(registree.verif),
     time: formatDate(parseInt(registree.time))
   }))
 

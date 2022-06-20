@@ -11,8 +11,6 @@ import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import TablePagination from '@mui/material/TablePagination'
 
-import formatDate from '../../../utils/formatDate'
-
 const columns = [
   { id: 'id', label: 'ID', minWidth: 170 },
   { id: 'email', label: 'Email', minWidth: 100 },
