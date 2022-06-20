@@ -10,34 +10,38 @@ const VerifyTerminateButtons = ({ id, eventName, token }) => {
 
   const handleVerify = async () => {
     setLoading(true)
-    try {
-      await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/verif/${id}/${eventName}`, {
-        method: 'PUT',
-        headers: {
-          'x-auth-token': token
-        }
-      })
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/verif/${id}/${eventName}`, {
+      method: 'PUT',
+      headers: {
+        'x-auth-token': token
+      }
+    })
+
+    if (res.ok) {
       router.reload()
-    } catch (e) {
-      console.log(e)
+    } else {
       alert('Error! Mohon ulangi. Jika tetap terjadi, mohon hubungi Sean.')
+      console.log(res)
     }
     setLoading(false)
   }
 
   const handleTerminate = async () => {
     setLoading(true)
-    try {
-      await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/terminate/${id}/${eventName}`, {
-        method: 'PUT',
-        headers: {
-          'x-auth-token': token
-        }
-      })
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/terminate/${id}/${eventName}`, {
+      method: 'PUT',
+      headers: {
+        'x-auth-token': token
+      }
+    })
+
+    if (res.ok) {
       router.reload()
-    } catch (e) {
-      console.log(e)
+    } else {
       alert('Error! Mohon ulangi. Jika tetap terjadi, mohon hubungi Sean.')
+      console.log(res)
     }
     setLoading(false)
   }

@@ -50,11 +50,11 @@ const navigation = () => {
     {
       title: 'Open/Close Regist',
       icon: LockOpenOutline,
-      path: '/typography'
+      path: '/registrations'
     },
     {
       title: 'Referral Codes',
-      path: '/icons',
+      path: '/referral-codes',
       icon: CreditCardOutline
     }
   ]
