@@ -23,6 +23,13 @@ export default async function login(req, res) {
         maxAge: 60 * 60 * 60 * 60 * 60,
         sameSite: 'strict',
         path: '/'
+      }),
+      cookie.serialize('token_expires_in', parseInt(Date.now() + 60 * 60 * 1000), {
+        httpOnly: false,
+        secure: true,
+        maxAge: 60 * 60 * 60 * 60 * 60,
+        sameSite: 'strict',
+        path: '/'
       })
     ])
 

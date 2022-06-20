@@ -16,6 +16,13 @@ export default async function login(req, res) {
         expires: new Date(0),
         sameSite: 'strict',
         path: '/'
+      }),
+      cookie.serialize('token_expires_in', '', {
+        httpOnly: false,
+        secure: true,
+        expires: new Date(0),
+        sameSite: 'strict',
+        path: '/'
       })
     ])
 
