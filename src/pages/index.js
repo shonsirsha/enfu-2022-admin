@@ -8,4 +8,13 @@ const Dashboard = () => {
   )
 }
 
+export async function getServerSideProps() {
+  return {
+    redirect: {
+      destination: '/dbcc',
+      permanent: false
+    }
+  }
+}
+
 export default Dashboard

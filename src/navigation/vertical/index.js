@@ -6,11 +6,11 @@ import LockOpenOutline from 'mdi-material-ui/LockOpenOutline'
 
 const navigation = () => {
   return [
-    {
-      title: 'Dashboard',
-      icon: HomeOutline,
-      path: '/'
-    },
+    // {
+    //   title: 'Dashboard',
+    //   icon: HomeOutline,
+    //   path: '/'
+    // },
     {
       sectionTitle: 'Pendaftar Event'
     },
