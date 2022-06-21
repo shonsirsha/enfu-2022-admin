@@ -80,12 +80,13 @@ const SharingSession = ({ registrees }) => {
 }
 
 export async function getServerSideProps(ctx) {
-  const { token } = parseCookies(ctx.req)
+  // const { token } = parseCookies(ctx.req)
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/dbcc`, {
     method: 'GET',
     headers: {
-      'x-auth-token': token
+      'x-auth-token':
+        'eyJhbGciOiJSUzI1NiIsImtpZCI6ImY5MGZiMWFlMDQ4YTU0OGZiNjgxYWQ2MDkyYjBiODY5ZWE0NjdhYzYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZW5mdTIwMjIiLCJhdWQiOiJlbmZ1MjAyMiIsImF1dGhfdGltZSI6MTY1NTc1NzY3NCwidXNlcl9pZCI6IlV0dDgyVlozdFloeHgzMzFwVTJZM2MySGR6RTMiLCJzdWIiOiJVdHQ4MlZaM3RZaHh4MzMxcFUyWTNjMkhkekUzIiwiaWF0IjoxNjU1NzcyMjI3LCJleHAiOjE2NTU3NzU4MjcsImVtYWlsIjoiYWRtaW5AZW5mdXRpb24uY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImFkbWluQGVuZnV0aW9uLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.ZfBHVNBINyg3wqEFI22xqTTOaUUB1iLCTtBBg_DGTU7czIcGhq9zpK6W61TkEJD5y7y_2qJXMu_J-ymluH2UJ0Yz_SQGcodLzhgShy_o2HgzjRDw8VPK6QvLEqi5yPl1L-iMSfQjoG1NiFh6hUQcBdmU_L7rZI1pocZMJ2bnZ41jQx8chqo0hhO32O1mW2vD-u_hMpMWPziykNMRy5-As_hCMsBjbN2Gge1R2Bt4bx12F2OLpuuN36Qkoma_tCdE3Aa2HOf8J2Nj2Ocq-Q6kz1BubrmvKh5I5TbIsVdt2EzSi7TxCyf3EDN8-oh80-894luaLvraZY_NPWziPH4zVg'
     }
   })
 
