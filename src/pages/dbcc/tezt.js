@@ -15,17 +15,24 @@ import Magnify from 'mdi-material-ui/Magnify'
 
 import TableDBCC from 'src/views/tables/TableDBCC'
 
-const SharingSession = ({ token }) => {
+const SharingSession = ({ posts }) => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
-        {token}
+        {/* {token}
         <br />
         {process.env.NEXT_PUBLIC_REST_API_URL}
         <br />
-        ANYAR
+
         <br />
-        {process.env.NEXT_PUBLIC_REST_API_DOMAIN}
+        {process.env.NEXT_PUBLIC_REST_API_DOMAIN} */}
+        <>
+          {posts.map(x => (
+            <>
+              {x.title} <br />
+            </>
+          ))}
+        </>
       </Grid>
     </Grid>
   )
@@ -34,9 +41,18 @@ const SharingSession = ({ token }) => {
 export async function getServerSideProps(ctx) {
   const { token } = parseCookies(ctx.req)
 
+  const res = await fetch(`${process.env.NEXT_PUBLIC_DUMMY_REST_API}/posts`, {
+    method: 'GET',
+    headers: {
+      'x-auth-token': token
+    }
+  })
+  let posts = await res.json()
+
   return {
     props: {
-      token
+      token,
+      posts
     }
   }
 }

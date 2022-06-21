@@ -91,6 +91,7 @@ export async function getServerSideProps(ctx) {
   })
 
   let subscribers = (await res.json()).result
+  console.log(subscribers)
   subscribers = subscribers.map(subscriber => ({ ...subscriber, time: formatDate(parseInt(subscriber.time)) }))
 
   return {
