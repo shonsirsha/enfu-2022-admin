@@ -74,14 +74,14 @@ const Subscribers = ({ subscribers }) => {
 export async function getServerSideProps(ctx) {
   const { token } = parseCookies(ctx.req)
 
-  // if (!token) {
-  //   return {
-  //     redirect: {
-  //       permanent: false,
-  //       destination: '/login'
-  //     }
-  //   }
-  // }
+  if (!token) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/login'
+      }
+    }
+  }
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/subscribers`, {
     method: 'GET',
@@ -91,9 +91,7 @@ export async function getServerSideProps(ctx) {
   })
 
   let subscribers = (await res.json()).result
-
-  // console.log(subscribers)
-  // subscribers = subscribers.map(subscriber => ({ ...subscriber, time: formatDate(parseInt(subscriber.time)) }))
+  subscribers = subscribers.map(subscriber => ({ ...subscriber, time: formatDate(parseInt(subscriber.time)) }))
 
   return {
     props: {

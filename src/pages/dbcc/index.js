@@ -82,6 +82,15 @@ const SharingSession = ({ registrees }) => {
 export async function getServerSideProps(ctx) {
   const { token } = parseCookies(ctx.req)
 
+  if (!token) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/login'
+      }
+    }
+  }
+
   const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/dbcc`, {
     method: 'GET',
     headers: {
