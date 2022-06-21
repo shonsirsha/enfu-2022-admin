@@ -67,7 +67,7 @@ const TableDBCC = ({ data }) => {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map(row => {
                 return (
-                  <Link key={row.id} href={`dbcc/${row.teamId}`} passHref>
+                  <Link key={row.teamId} href={`dbcc/${row.teamId}`} passHref>
                     <TableRow hover role='checkbox' tabIndex={-1} key={row.teamId}>
                       {columns.map(column => {
                         const value = row[column.id]

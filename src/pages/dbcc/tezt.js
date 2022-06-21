@@ -15,7 +15,7 @@ import Magnify from 'mdi-material-ui/Magnify'
 
 import TableDBCC from 'src/views/tables/TableDBCC'
 
-const SharingSession = ({ posts }) => {
+const SharingSession = ({ posts, token }) => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
@@ -26,6 +26,40 @@ const SharingSession = ({ posts }) => {
 
         <br />
         {process.env.NEXT_PUBLIC_REST_API_DOMAIN} */}
+
+        <button
+          onClick={async () => {
+            const x = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/config`)
+            if (x.ok) {
+              const result = await x.json()
+              console.log(result)
+            } else {
+              console.log()
+              console.log('NOT OK')
+            }
+          }}
+        >
+          fetch without token
+        </button>
+
+        <button
+          onClick={async () => {
+            const x = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/subscribers`, {
+              method: 'GET',
+              headers: {
+                'x-auth-token': token
+              }
+            })
+            if (x.ok) {
+              const result = await x.json()
+              console.log(result)
+            } else {
+              console.log('NOT OK')
+            }
+          }}
+        >
+          fetch WITH token
+        </button>
         <>
           {posts.map(x => (
             <>
