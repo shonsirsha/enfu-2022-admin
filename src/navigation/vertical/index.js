@@ -12,7 +12,7 @@ const navigation = () => {
     //   path: '/'
     // },
     {
-      sectionTitle: 'Pendaftar Event'
+      sectionTitle: 'Pendaftar Eventzzzz'
     },
     {
       title: 'DBCC',
