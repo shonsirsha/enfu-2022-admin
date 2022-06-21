@@ -20,6 +20,8 @@ const SharingSession = ({ token }) => {
     <Grid container spacing={6}>
       <Grid item xs={12}>
         {token}
+        {process.env.NEXT_PUBLIC_REST_API_URL}
+        {process.env.NEXT_PUBLIC_REST_API_DOMAIN}
       </Grid>
     </Grid>
   )
