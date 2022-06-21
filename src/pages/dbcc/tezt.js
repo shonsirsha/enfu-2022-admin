@@ -20,7 +20,9 @@ const SharingSession = ({ token }) => {
     <Grid container spacing={6}>
       <Grid item xs={12}>
         {token}
+        <br />
         {process.env.NEXT_PUBLIC_REST_API_URL}
+        <br />
         {process.env.NEXT_PUBLIC_REST_API_DOMAIN}
       </Grid>
     </Grid>
@@ -28,11 +30,11 @@ const SharingSession = ({ token }) => {
 }
 
 export async function getServerSideProps(ctx) {
-  const { token } = parseCookies(ctx.req)
+  // const { token } = parseCookies(ctx.req)
 
   return {
     props: {
-      token
+      token: 'asd'
     }
   }
 }
