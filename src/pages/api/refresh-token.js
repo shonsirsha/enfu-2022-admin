@@ -32,7 +32,7 @@ export default async function refreshToken(req, res) {
         cookie.serialize('token', freshToken.access_token, {
           httpOnly: true,
           secure: true,
-          maxAge: 60 * 60 * 24 * 7,
+          maxAge: 60 * 60,
           sameSite: 'strict',
           path: '/'
         }),
