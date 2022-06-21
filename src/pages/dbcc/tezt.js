@@ -15,7 +15,7 @@ import Magnify from 'mdi-material-ui/Magnify'
 
 import TableDBCC from 'src/views/tables/TableDBCC'
 
-const SharingSession = ({ posts, token }) => {
+const SharingSession = ({ subscribers, token }) => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
@@ -61,9 +61,9 @@ const SharingSession = ({ posts, token }) => {
           fetch WITH token
         </button>
         <>
-          {posts.map(x => (
+          {subscribers.map(x => (
             <>
-              {x.title} <br />
+              {x.email} <br />
             </>
           ))}
         </>
@@ -75,18 +75,20 @@ const SharingSession = ({ posts, token }) => {
 export async function getServerSideProps(ctx) {
   const { token } = parseCookies(ctx.req)
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_DUMMY_REST_API}/posts`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/subscribers`, {
     method: 'GET',
     headers: {
       'x-auth-token': token
     }
   })
-  let posts = await res.json()
+
+  let subscribers = (await res.json()).result
+  console.log(subscribers)
+  subscribers = subscribers.map(subscriber => ({ ...subscriber, time: formatDate(parseInt(subscriber.time)) }))
 
   return {
     props: {
-      token,
-      posts
+      subscribers
     }
   }
 }
