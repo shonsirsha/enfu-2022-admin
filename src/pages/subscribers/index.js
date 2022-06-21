@@ -74,14 +74,14 @@ const Subscribers = ({ subscribers }) => {
 export async function getServerSideProps(ctx) {
   const { token } = parseCookies(ctx.req)
 
-  if (!token) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/login'
-      }
-    }
-  }
+  // if (!token) {
+  //   return {
+  //     redirect: {
+  //       permanent: false,
+  //       destination: '/login'
+  //     }
+  //   }
+  // }
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/subscribers`, {
     method: 'GET',
