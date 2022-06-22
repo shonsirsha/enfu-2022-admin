@@ -13,7 +13,7 @@ export default async function login(req, res) {
       cookie.serialize('token', authToken, {
         httpOnly: true,
         secure: true,
-        maxAge: 2160000,
+        maxAge: 60 * 60,
         sameSite: 'strict',
         path: '/'
       }),
