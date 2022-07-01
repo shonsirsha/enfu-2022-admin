@@ -14,10 +14,17 @@ import InputAdornment from '@mui/material/InputAdornment'
 import Magnify from 'mdi-material-ui/Magnify'
 
 import TableDBCC from 'src/views/tables/TableDBCC'
+import { useRouter } from 'next/router'
 
-const SharingSession = ({ registrees }) => {
+const DBCC = ({ registrees, token }) => {
   const [filteredRegistrees, setFilteredRegistrees] = useState(registrees)
   const [keyword, setKeyword] = useState('')
+  const router = useRouter()
+  useEffect(() => {
+    if (!token) {
+      router.replace('/login')
+    }
+  }, [token, router])
 
   useEffect(() => {
     if (keyword.length) {
@@ -114,9 +121,10 @@ export async function getServerSideProps(ctx) {
 
   return {
     props: {
-      registrees
+      registrees,
+      token
     }
   }
 }
 
-export default SharingSession
+export default DBCC
