@@ -253,7 +253,7 @@ const CoachingClinic = ({ registree, token }) => {
                 <img
                   width={'100%'}
                   height={'auto'}
-                  style={{ maxWidth: 400 }}
+                  style={{ maxWidth: 560 }}
                   src={imageURLCreator(registree.paymentReceiptImageURL)}
                   alt='Image'
                 />
