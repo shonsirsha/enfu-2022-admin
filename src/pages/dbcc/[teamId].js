@@ -39,178 +39,228 @@ const CoachingClinic = ({ registree, token }) => {
             <Typography variant='h5' sx={{}}>
               Team ID: <b>{registree.teamId}</b>
             </Typography>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
-              <Card variant='outlined' sx={{ p: 4, my: 10 }}>
-                <Typography sx={{ fontSize: 18 }} color='text.secondary' gutterBottom>
-                  Team Leader's Information
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Name : <b>{registree.fullName1}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Place, Date of Birth: <b>{registree.placeDob1}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Gender: <b>{registree.gender1.toUpperCase()}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Email: <b>{registree.email1}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Phone Number: <b>{registree.phoneNr1}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  LINE ID: <b>{registree.lineId1}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  University / Institute: <b>{registree.univName1}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Faculty / Department / Batch: <b>{registree.facultyDepartmentBatch1}</b>
-                </Typography>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={12} lg={4}>
+                <Card variant='outlined' sx={{ p: 4, my: 10 }}>
+                  <Typography sx={{ fontSize: 18 }} color='text.secondary' gutterBottom>
+                    Team Leader's Information
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Name : <b>{registree.fullName1}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Place, Date of Birth: <b>{registree.placeDob1}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Gender: <b>{registree.gender1.toUpperCase()}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Email: <b>{registree.email1}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Phone Number: <b>{registree.phoneNr1}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    LINE ID: <b>{registree.lineId1}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    University / Institute: <b>{registree.univName1}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Faculty / Department / Batch: <b>{registree.facultyDepartmentBatch1}</b>
+                  </Typography>
 
-                <Typography variant='body2' sx={{ mt: 6, fontSize: 18 }}>
-                  Foto 3x4:
-                  {registree['3x4_1URL'].length ? (
-                    <img width={'100%'} height={'auto'} src={imageURLCreator(registree['3x4_1URL'])} alt='Image' />
-                  ) : (
-                    <b>Not Uploaded</b>
-                  )}
-                </Typography>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <Typography variant='body2' sx={{ mt: 6, mb: 4, fontSize: 18 }}>
+                      Foto 3x4:
+                    </Typography>
 
-                <Typography variant='body2' sx={{ mt: 6, fontSize: 18 }}>
-                  Foto Student ID:
-                  {registree['student_id_1URL'].length ? (
-                    <img
-                      width={'100%'}
-                      height={'auto'}
-                      src={imageURLCreator(registree['student_id_1URL'])}
-                      alt='Image'
-                    />
-                  ) : (
-                    <b>Not Uploaded</b>
-                  )}
-                </Typography>
-              </Card>
-              <Card variant='outlined' sx={{ p: 4, my: 10, mx: 6 }}>
-                <Typography sx={{ fontSize: 18 }} color='text.secondary' gutterBottom>
-                  2<sup>nd</sup> Member's Information
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Name : <b>{registree.fullName2}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Place, Date of Birth: <b>{registree.placeDob2}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Gender: <b>{registree.gender2 && registree.gender2.toUpperCase()}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Email: <b>{registree.email2}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Phone Number: <b>{registree.phoneNr2}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  LINE ID: <b>{registree.lineId2}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  University / Institute: <b>{registree.univName2}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Faculty / Department / Batch: <b>{registree.facultyDepartmentBatch2}</b>
-                </Typography>
+                    {registree['3x4_1URL'].length ? (
+                      <img
+                        width={'100%'}
+                        style={{ maxWidth: 400 }}
+                        height={'auto'}
+                        src={imageURLCreator(registree['3x4_1URL'])}
+                        alt='Image'
+                      />
+                    ) : (
+                      <b>Not Uploaded</b>
+                    )}
+                  </div>
 
-                <Typography variant='body2' sx={{ mt: 6, fontSize: 18 }}>
-                  Foto 3x4:
-                  {registree['3x4_2URL'].length ? (
-                    <img width={'100%'} height={'auto'} src={imageURLCreator(registree['3x4_2URL'])} alt='Image' />
-                  ) : (
-                    <b>Not Uploaded</b>
-                  )}
-                </Typography>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <Typography variant='body2' sx={{ mt: 6, mb: 4, fontSize: 18 }}>
+                      Foto Student ID:
+                    </Typography>
 
-                <Typography variant='body2' sx={{ mt: 6, fontSize: 18 }}>
-                  Foto Student ID:
-                  {registree['student_id_2URL'].length ? (
-                    <img
-                      width={'100%'}
-                      height={'auto'}
-                      src={imageURLCreator(registree['student_id_2URL'])}
-                      alt='Image'
-                    />
-                  ) : (
-                    <b>Not Uploaded</b>
-                  )}
-                </Typography>
-              </Card>
+                    {registree['student_id_1URL'].length ? (
+                      <img
+                        width={'100%'}
+                        style={{ maxWidth: 400 }}
+                        height={'auto'}
+                        src={imageURLCreator(registree['student_id_1URL'])}
+                        alt='Image'
+                      />
+                    ) : (
+                      <b>Not Uploaded</b>
+                    )}
+                  </div>
+                </Card>
+              </Grid>
 
-              <Card variant='outlined' sx={{ p: 4, my: 10 }}>
-                <Typography sx={{ fontSize: 18 }} color='text.secondary' gutterBottom>
-                  3<sup>rd</sup> Member's Information
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Name : <b>{registree.fullName3}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Place, Date of Birth: <b>{registree.placeDob3}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Gender: <b>{registree.gender3 && registree.gender3.toUpperCase()}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Email: <b>{registree.email3}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Phone Number: <b>{registree.phoneNr3}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  LINE ID: <b>{registree.lineId3}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  University / Institute: <b>{registree.univName3}</b>
-                </Typography>
-                <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-                  Faculty / Department / Batch: <b>{registree.facultyDepartmentBatch3}</b>
-                </Typography>
+              <Grid item xs={12} md={12} lg={4}>
+                <Card variant='outlined' sx={{ p: 4, my: 10, mx: 6 }}>
+                  <Typography sx={{ fontSize: 18 }} color='text.secondary' gutterBottom>
+                    2<sup>nd</sup> Member's Information
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Name : <b>{registree.fullName2}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Place, Date of Birth: <b>{registree.placeDob2}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Gender: <b>{registree.gender2 && registree.gender2.toUpperCase()}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Email: <b>{registree.email2}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Phone Number: <b>{registree.phoneNr2}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    LINE ID: <b>{registree.lineId2}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    University / Institute: <b>{registree.univName2}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Faculty / Department / Batch: <b>{registree.facultyDepartmentBatch2}</b>
+                  </Typography>
 
-                <Typography variant='body2' sx={{ mt: 6, fontSize: 18 }}>
-                  Foto 3x4:
-                  {registree['3x4_3URL'].length ? (
-                    <img width={'100%'} height={'auto'} src={imageURLCreator(registree['3x4_3URL'])} alt='Image' />
-                  ) : (
-                    <b>Not Uploaded</b>
-                  )}
-                </Typography>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <Typography variant='body2' sx={{ mt: 6, mb: 4, fontSize: 18 }}>
+                      Foto 3x4:
+                    </Typography>
 
-                <Typography variant='body2' sx={{ mt: 6, fontSize: 18 }}>
-                  Foto Student ID:
-                  {registree['student_id_3URL'].length ? (
-                    <img
-                      width={'100%'}
-                      height={'auto'}
-                      src={imageURLCreator(registree['student_id_3URL'])}
-                      alt='Image'
-                    />
-                  ) : (
-                    <b>Not Uploaded</b>
-                  )}
-                </Typography>
-              </Card>
-            </Box>
-            <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
-              Bukti Transfer:{' '}
+                    {registree['3x4_2URL'].length ? (
+                      <img
+                        width={'100%'}
+                        style={{ maxWidth: 400 }}
+                        height={'auto'}
+                        src={imageURLCreator(registree['3x4_2URL'])}
+                        alt='Image'
+                      />
+                    ) : (
+                      <b>Not Uploaded</b>
+                    )}
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <Typography variant='body2' sx={{ mt: 6, mb: 4, fontSize: 18 }}>
+                      Foto Student ID:
+                    </Typography>
+
+                    {registree['student_id_2URL'].length ? (
+                      <img
+                        width={'100%'}
+                        style={{ maxWidth: 400 }}
+                        height={'auto'}
+                        src={imageURLCreator(registree['student_id_2URL'])}
+                        alt='Image'
+                      />
+                    ) : (
+                      <b>Not Uploaded</b>
+                    )}
+                  </div>
+                </Card>
+              </Grid>
+
+              <Grid item xs={12} md={12} lg={4}>
+                <Card variant='outlined' sx={{ p: 4, my: 10 }}>
+                  <Typography sx={{ fontSize: 18 }} color='text.secondary' gutterBottom>
+                    3<sup>rd</sup> Member's Information
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Name : <b>{registree.fullName3}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Place, Date of Birth: <b>{registree.placeDob3}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Gender: <b>{registree.gender3 && registree.gender3.toUpperCase()}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Email: <b>{registree.email3}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Phone Number: <b>{registree.phoneNr3}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    LINE ID: <b>{registree.lineId3}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    University / Institute: <b>{registree.univName3}</b>
+                  </Typography>
+                  <Typography variant='body2' sx={{ mt: 4, fontSize: 18 }}>
+                    Faculty / Department / Batch: <b>{registree.facultyDepartmentBatch3}</b>
+                  </Typography>
+
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <Typography variant='body2' sx={{ mt: 6, mb: 4, fontSize: 18 }}>
+                      Foto 3x4:
+                    </Typography>
+
+                    {registree['3x4_3URL'].length ? (
+                      <img
+                        width={'100%'}
+                        style={{ maxWidth: 400 }}
+                        height={'auto'}
+                        src={imageURLCreator(registree['3x4_3URL'])}
+                        alt='Image'
+                      />
+                    ) : (
+                      <b>Not Uploaded</b>
+                    )}
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <Typography variant='body2' sx={{ mt: 6, mb: 4, fontSize: 18 }}>
+                      Foto Student ID:
+                    </Typography>
+
+                    {registree['student_id_3URL'].length ? (
+                      <img
+                        width={'100%'}
+                        style={{ maxWidth: 400 }}
+                        height={'auto'}
+                        src={imageURLCreator(registree['student_id_3URL'])}
+                        alt='Image'
+                      />
+                    ) : (
+                      <b>Not Uploaded</b>
+                    )}
+                  </div>
+                </Card>
+              </Grid>
+            </Grid>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <Typography variant='body2' sx={{ mt: 4, mb: 4, fontSize: 18 }}>
+                Bukti Transfer:{' '}
+              </Typography>
+
               {registree.paymentReceiptImageURL.length ? (
                 <img
                   width={'100%'}
                   height={'auto'}
+                  style={{ maxWidth: 400 }}
                   src={imageURLCreator(registree.paymentReceiptImageURL)}
                   alt='Image'
                 />
               ) : (
                 <b>Not Uploaded</b>
               )}
-            </Typography>
+            </div>
             {registree.verif === 0 && <VerifyTerminateButtons id={registree.teamId} eventName={'dbcc'} token={token} />}
           </Box>
         </Card>
